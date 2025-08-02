@@ -1,8 +1,9 @@
-import { Menu, Sidebar, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { dummyUserData } from '../assets/assets'
 import Loading from '../components/Loading'
+import Sidebar from '../components/Sidebar'
 
 const Layout = () => {
 
