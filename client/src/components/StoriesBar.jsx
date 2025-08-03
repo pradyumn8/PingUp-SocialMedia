@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { dummyStoriesData } from '../assets/assets'
 import { Plus } from 'lucide-react'
 import moment from 'moment'
+import StoryModel from './StoryModel'
 
 const StoriesBar = () => {
   const [stories, setStories] = useState([])
-  useEffect(() => {
+  const [showModel, setShowModel] = useState(false)
+  const [viewStory, setViewStory] = useState(null)
+
+  const fetchStories = async () => {
     setStories(dummyStoriesData)
+  }
+
+  useEffect(() => {
+    fetchStories()
   }, [])
 
   return (
@@ -23,6 +31,7 @@ const StoriesBar = () => {
       <div className="flex flex-row flex-nowrap gap-4 pb-5">
         {/* Create Story card */}
         <div
+        onClick={()=>setShowModel(true)}
           className="
             flex-none w-32 aspect-[3/4]
             rounded-lg border-2 border-dashed border-indigo-300
@@ -30,7 +39,7 @@ const StoriesBar = () => {
             cursor-pointer hover:shadow-lg
             transition-all duration-200
           "
-          onClick={() => console.log('open create-story modal')}
+          // onClick={() => console.log('open create-story modal')}
         >
           <div className="h-full flex flex-col items-center justify-center p-4">
             <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center mb-3">
@@ -94,6 +103,10 @@ const StoriesBar = () => {
           </div>
         ))}
       </div>
+      {/* Add Story model */}
+      {
+        showModel && <StoryModel setShowModel={setShowModel} fetchStories={fetchStories}/>
+      }
     </div>
   )
 }
