@@ -3,6 +3,7 @@ import { dummyStoriesData } from '../assets/assets'
 import { Plus } from 'lucide-react'
 import moment from 'moment'
 import StoryModel from './StoryModel'
+import StoryViewer from './StoryViewer'
 
 const StoriesBar = () => {
   const [stories, setStories] = useState([])
@@ -55,6 +56,7 @@ const StoriesBar = () => {
         {stories.map((story, idx) => (
           <div
             key={idx}
+            onClick={()=>setViewStory(story)}
             className="
               flex-none relative w-32 aspect-[3/4]
               rounded-lg
@@ -107,6 +109,8 @@ const StoriesBar = () => {
       {
         showModel && <StoryModel setShowModel={setShowModel} fetchStories={fetchStories}/>
       }
+      {/* view story model */}
+      {viewStory && <StoryViewer viewStory={viewStory} setViewStory={setViewStory}/>}
     </div>
   )
 }
