@@ -29,18 +29,14 @@ const StoriesBar = () => {
         px-4
       "
     >
-      <div className="flex flex-row flex-nowrap gap-4 pb-5">
+      <div className="flex gap-4 pb-5">
         {/* Create Story card */}
         <div
-        onClick={()=>setShowModel(true)}
+          onClick={() => setShowModel(true)}
           className="
-            flex-none w-32 aspect-[3/4]
-            rounded-lg border-2 border-dashed border-indigo-300
-            bg-gradient-to-b from-indigo-50 to-white
-            cursor-pointer hover:shadow-lg
-            transition-all duration-200
+            rounded-lg shadow-sm min-w-30 max-w-30 max-h-40 aspect-[3/4] cursor-pointer hover:shadow-lg transition-all
+            duration-200 border-2 border-dashed border-indigo-300 bg-gradient-to-b from-indigo-50 to-white
           "
-          // onClick={() => console.log('open create-story modal')}
         >
           <div className="h-full flex flex-col items-center justify-center p-4">
             <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center mb-3">
@@ -56,36 +52,31 @@ const StoriesBar = () => {
         {stories.map((story, idx) => (
           <div
             key={idx}
-            onClick={()=>setViewStory(story)}
+            onClick={() => setViewStory(story)}
             className="
-              flex-none relative w-32 aspect-[3/4]
-              rounded-lg
-              bg-gradient-to-b from-indigo-500 to-purple-600
-              hover:from-indigo-700 hover:to-purple-800
-              cursor-pointer hover:shadow-lg
-              transition-all duration-200 active:scale-95
+              relative rounded-lg shadow min-w-30 max-w-30 max-h-40 cursor-pointer
+              hover:shadow-lg transition-all duration-200 bg-gradient-to-b from-indigo-500
+              to-purple-600 hover:from-indigo-700 hover:to-purple-800 active:scale-95
             "
           >
             <img
               src={story.user.profile_picture}
               alt=""
               className="
-                absolute w-8 h-8
-                top-3 left-3 z-10
-                rounded-full ring ring-gray-100 shadow
+              absolute size-8 top-3 left-3 
+              z-10 rounded-full ring ring-gray-100 shadow
               "
             />
             <p
               className="
-                absolute top-12 left-3
-                w-20 text-white/60 text-sm truncate
+                absolute top-18 left-3
+                text-white/60 text-sm truncate max-w-24
               "
             >
               {story.content}
             </p>
             <p className="
-                absolute bottom-1 right-2 z-10
-                text-xs text-white
+               text-white absolute bottom-1 right-2 z-10 text-xs
               ">
               {moment(story.createdAt).fromNow()}
             </p>
@@ -107,10 +98,10 @@ const StoriesBar = () => {
       </div>
       {/* Add Story model */}
       {
-        showModel && <StoryModel setShowModel={setShowModel} fetchStories={fetchStories}/>
+        showModel && <StoryModel setShowModel={setShowModel} fetchStories={fetchStories} />
       }
       {/* view story model */}
-      {viewStory && <StoryViewer viewStory={viewStory} setViewStory={setViewStory}/>}
+      {viewStory && <StoryViewer viewStory={viewStory} setViewStory={setViewStory} />}
     </div>
   )
 }

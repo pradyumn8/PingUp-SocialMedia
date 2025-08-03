@@ -6,7 +6,9 @@ const StoryViewer = ({ viewStory, setViewStory }) => {
     const [progress, setProgess] = useState(0)
 
     useEffect(()=>{
+        
         let timer, progressInterval;
+        
         if(viewStory && viewStory.media_type !== 'video'){
             setProgess(0)
             const duration = 10000;
