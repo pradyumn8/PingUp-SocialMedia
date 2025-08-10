@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 const PostCard = ({post}) => {
 
     // write for change # color
-    const postWithHashtags = post.content.replace(/(#\w+)/g,'<span class="text-indigo-600">$1</span>')
+    const postWithHashtags = post.content.replace(/(#\w+)/g,'<span class="text-indigo-600 cursor-pointer">$1</span>')
     const [likes, setLikes] = useState(post.likes_count)
     const currentUser = dummyUserData
 
